@@ -2,6 +2,10 @@
 
 ## How to Use
 
+To use this project, you must include the main header file in your source code:
+
+    #include "include/main.hpp"
+
 You must initialize the `Syscall` class beforehand so that everything is populated and ready for work.
 
 For example, if we want to call `NtTerminateProcess`, we first need to call `Init("NtName")`. 
@@ -11,6 +15,8 @@ If it returns `true`, we can proceed to the next step.
 The next step is simply casting the address of `sys.syscall` to the type of the required function.
 
 ### Example
+
+    #include "include/main.hpp"
 
     Syscall sys;
     

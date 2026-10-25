@@ -1,7 +1,7 @@
 #include "include/main.hpp"
 
 
-PPEB Syscall::getPEB() {
+PPEB getPEB() {
 	return reinterpret_cast<PPEB>(__readgsqword(0x60));
 }
 
@@ -44,7 +44,7 @@ std::vector<int> Syscall::GetNumberOfNames() {
 }
 
 
-DWORD64 Syscall::GetAddrFunc(std::string Name) {
+DWORD64 Syscall::GetAddrFunc(const std::string& Name) {
 	PPEB peb = getPEB();
 	PPEB_LDR_DATA ldr = reinterpret_cast<PPEB_LDR_DATA>(peb->Ldr);
 

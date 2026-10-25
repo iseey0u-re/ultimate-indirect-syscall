@@ -1,8 +1,4 @@
-#include <iostream>
-
 #include "include/main.hpp"
-
-
 
 uintptr_t Syscall::GetTESTaddr(uintptr_t StartStubAddr) {
 	// F6 04 bytes need find 
@@ -108,7 +104,7 @@ static bool ScanRegionSEH(BYTE* regionStart, BYTE* regionEnd,
 
 
 int Syscall::FindSSN(uintptr_t AddressFromStub) {
-	DWORD64 VirtualQueryAddr = Syscall::GetAddrFunc("NtQueryVirtualMemory"); // This function is usually not hooked
+	DWORD64 VirtualQueryAddr = GetAddrFunc("NtQueryVirtualMemory"); // This function is usually not hooked
 	auto NtQueryVirtualMemory = reinterpret_cast<pfnNtQueryVirtualMemory>(VirtualQueryAddr);
 
 	const BYTE SIG_MOV10_RCX[] = { 0x4C, 0x8B, 0xD1 }; // mov r10, rcx

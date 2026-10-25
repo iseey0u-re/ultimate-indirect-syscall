@@ -54,7 +54,7 @@ int Syscall::GetSSN(uintptr_t StartStubAddr) { //if without hook
 bool Syscall::IsHooked(uintptr_t StartStubAddr) {
 	unsigned char* bytes = reinterpret_cast<unsigned char*>(StartStubAddr);
 
-	if (bytes[0] != 0x4C) { // mov r10, rcx
+	if (bytes[0] != 0x4C || bytes[1] != 0x8b || bytes[2] != 0xd1) { // mov r10, rcx
 		return true; // Hooked
 	}
 
